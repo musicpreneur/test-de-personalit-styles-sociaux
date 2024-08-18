@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Personnalité - Style Social</title>
+    <style>
+        body {
+            font-family: 'Museo Sans Serif', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 150px;
+        }
+        h1, h2 {
+            font-family: 'Jeanne Moderno OT-Ultra', serif;
+            color: #422E1A; /* Bistre color */
+        }
+        .step {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        button {
+            background-color: #E5B65A; /* Sunray color */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'Jeanne Moderno OT-Ultra', serif;
+        }
+        button:hover {
+            background-color: #422E1A; /* Bistre color */
+        }
+        .option {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #E5B65A; /* Sunray color */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .option:hover {
+            background-color: #f9f2e2;
+        }
+        .selected {
+            background-color: #E5B65A; /* Sunray color */
+            color: #fff;
+        }
+        .slider {
+            width: 100%;
+            margin: 10px 0;
+        }
+        #result {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .intro, .outro {
+            background-color: #f9f2e2;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="chemin/vers/votre/logo.png" alt="Logo de la formation">
+        </div>
+        <h1>Test de Personnalité - Style Social</h1>
+        
+        <div id="step1" class="step active">
+            <div class="intro">
+                <p>Bienvenue sur ce test qui va t'aider à découvrir une facette de ta personnalité. <strong>Disclaimer !</strong> Il ne s'agit pas d'un test scientifique, il est donc tout à fait normal que les résultats changent dans le temps, et c'est tant mieux, ça signifie que ta personnalité évolue. Réponds aux affirmations de la manière la plus sincère qui soit pour toi aujourd'hui.</p>
+            </div>
+            
+            <h2>Étape 1: Choisissez entre ces affirmations</h2>
+            <div class="option" data-type="promoteur">Je suis enthousiaste et j'aime prendre des risques.</div>
+            <div class="option" data-type="sympathique">Je suis chaleureux et j'aime aider les autres.</div>
+            <div class="option" data-type="analyste">Je suis méthodique et j'aime résoudre des problèmes complexes.</div>
+            <div class="option" data-type="dirigeant">Je suis déterminé et j'aime prendre des décisions.</div>
+            <button id="nextStep1">Suivant</button>
+        </div>
+        
+        <div id="step2" class="step">
+            <h2>Étape 2: Choisissez 3 caractéristiques qui vous décrivent le mieux</h2>
+            <div class="option" data-type="promoteur">Créatif</div>
+            <div class="option" data-type="sympathique">Empathique</div>
+            <div class="option" data-type="analyste">Logique</div>
+            <div class="option" data-type="dirigeant">Assertif</div>
+            <div class="option" data-type="promoteur">Optimiste</div>
+            <div class="option" data-type="sympathique">Coopératif</div>
+            <div class="option" data-type="analyste">Précis</div>
+            <div class="option" data-type="dirigeant">Ambitieux</div>
+            <div class="option" data-type="promoteur">Aventureux</div>
+            <div class="option" data-type="sympathique">Patient</div>
+            <div class="option" data-type="analyste">Organisé</div>
+            <div class="option" data-type="dirigeant">Compétitif</div>
+            <button id="nextStep2">Suivant</button>
+        </div>
+        
+        <div id="step3" class="step">
+            <h2>Étape 3: Évaluez ces affirmations</h2>
+            <p>1 = Pas du tout d'accord, 5 = Tout à fait d'accord</p>
+            
+            <p>J'aime être au centre de l'attention.</p>
+            <input type="range" min="1" max="5" value="3" class="slider" data-type="promoteur">
+            
+            <p>Je préfère travailler en équipe plutôt que seul.</p>
+            <input type="range" min="1" max="5" value="3" class="slider" data-type="sympathique">
+            
+            <p>Je prends le temps d'analyser toutes les options avant de prendre une décision.</p>
+            <input type="range" min="1" max="5" value="3" class="slider" data-type="analyste">
+            
+            <p>Je n'hésite pas à prendre le leadership dans un groupe.</p>
+            <input type="range" min="1" max="5" value="3" class="slider" data-type="dirigeant">
+            
+            <button id="submitTest">Voir les résultats</button>
+        </div>
+        
+        <div id="resultContainer" style="display: none;">
+            <div id="result"></div>
+            <div class="outro">
+                <p>Petit rappel : le résultat que tu obtiens aujourd'hui ne t'enferme pas dans une case. Reviens dans la formation et nous allons voir ensemble comment tu peux tirer profit de ces informations pour ton projet musical.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const steps = document.querySelectorAll('.step');
+        const nextStep1 = document.getElementById('nextStep1');
+        const nextStep2 = document.getElementById('nextStep2');
+        const submitTest = document.getElementById('submitTest');
+        const result = document.getElementById('result');
+        const resultContainer = document.getElementById('resultContainer');
+        
+        let scores = {
+            promoteur: 0,
+            sympathique: 0,
+            analyste: 0,
+            dirigeant: 0
+        };
+        
+        nextStep1.addEventListener('click', () => {
+            const selected = document.querySelector('#step1 .selected');
+            if (selected) {
+                scores[selected.dataset.type] += 2;
+                steps[0].classList.remove('active');
+                steps[1].classList.add('active');
+            } else {
+                alert("Veuillez sélectionner une option avant de continuer.");
+            }
+        });
+        
+        nextStep2.addEventListener('click', () => {
+            const selected = document.querySelectorAll('#step2 .selected');
+            if (selected.length === 3) {
+                selected.forEach(option => {
+                    scores[option.dataset.type] += 1;
+                });
+                steps[1].classList.remove('active');
+                steps[2].classList.add('active');
+            } else {
+                alert("Veuillez sélectionner exactement 3 caractéristiques avant de continuer.");
+            }
+        });
+        
+        submitTest.addEventListener('click', () => {
+            const sliders = document.querySelectorAll('#step3 .slider');
+            sliders.forEach(slider => {
+                scores[slider.dataset.type] += parseInt(slider.value);
+            });
+            
+            const maxScore = Math.max(...Object.values(scores));
+            const personality = Object.keys(scores).find(key => scores[key] === maxScore);
+            
+            let personalityDescription = '';
+            switch(personality) {
+                case 'promoteur':
+                    personalityDescription = "Le Promoteur : Vous êtes enthousiaste, créatif et toujours prêt à relever de nouveaux défis. Votre énergie est contagieuse et vous inspirez les autres à penser de manière innovante.";
+                    break;
+                case 'sympathique':
+                    personalityDescription = "Le Sympathique : Vous êtes chaleureux, empathique et un excellent soutien pour les autres. Votre capacité à créer des liens et à maintenir l'harmonie dans un groupe est remarquable.";
+                    break;
+                case 'analyste':
+                    personalityDescription = "L'Analyste : Vous êtes méthodique, logique et précis. Votre capacité à résoudre des problèmes complexes et à fournir des analyses détaillées est très appréciée.";
+                    break;
+                case 'dirigeant':
+                    personalityDescription = "Le Dirigeant : Vous êtes déterminé, assertif et n'avez pas peur de prendre des décisions difficiles. Votre leadership naturel inspire confiance et respect.";
+                    break;
+            }
+            
+            result.innerHTML = `Votre style social dominant est : <br>${personalityDescription}`;
+            steps[2].classList.remove('active');
+            resultContainer.style.display = 'block';
+        });
+        
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                if (this.parentNode.id === 'step1') {
+                    document.querySelectorAll('#step1 .option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                } else if (this.parentNode.id === 'step2') {
+                    const selected = document.querySelectorAll('#step2 .selected');
+                    if (selected.length < 3 || this.classList.contains('selected')) {
+                        this.classList.toggle('selected');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
